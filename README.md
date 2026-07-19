@@ -140,10 +140,46 @@ Detected focus: (2, 20, 20)
 Result: PASS
 ```
 
-## Run Order
+## Input Data Layout
+
+Step 1 supports two input modes. Use cohort and sequence folder names that match
+`config/default.yaml`.
+
+For raw DICOM input:
+
+```text
+data/dicom_data/patients/<case>/<sequence>/
+data/dicom_data/controls/<case>/<sequence>/
+```
+
+Run step 1 with conversion enabled:
+
+```bash
+python scripts/run_step1_ingest_dicom.py
+```
+
+For already converted NIfTI input:
+
+```text
+data/nifti/patients/<case>/<sequence>/*.nii.gz
+data/nifti/controls/<case>/<sequence>/*.nii.gz
+```
+
+Run step 1 without DICOM conversion:
 
 ```bash
 python scripts/run_step1_ingest_dicom.py --no-convert
+```
+
+Both modes create the standardized `data/ordered_data` tree used by the later
+pipeline steps.
+
+## Run Order
+
+Use one of the two step 1 commands above, depending on whether the input starts
+as DICOM or already converted NIfTI. Then continue with:
+
+```bash
 python scripts/run_step2_skullstrip_cmds.py
 python scripts/run_step3_make_cv_split.py
 python scripts/run_step4_mrc_compute.py

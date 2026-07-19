@@ -19,14 +19,19 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="VIC Step 1: DICOM -> NIfTI (if needed) + ordered_data + Excel tables.")
     ap.add_argument("--config", type=str, default="config/default.yaml")
     ap.add_argument("--print-skips", action="store_true", help="Print which folders were skipped (already converted)")
-    ap.add_argument("--no-convert", action="store_true", help="Do not run DICOM->NIfTI; only build ordered_data + tables")
+    ap.add_argument(
+        "--no-convert",
+        action="store_true",
+        help="Use existing NIfTI files in data/nifti instead of running DICOM->NIfTI conversion.",
+    )
     args = ap.parse_args()
 
     paths = VICPaths.from_env()
     cfg = load_config(paths.root / args.config)
 
     # 1) build stable case id mapping
-    mapping = build_case_id_map(paths.dicom_dir, cfg.cohorts)
+    mapping_root = paths.nifti_dir if args.no_convert else paths.dicom_dir
+    mapping = build_case_id_map(mapping_root, cfg.cohorts)
     map_path = paths.outputs_dir / "tables" / "case_id_match.xlsx"
     save_case_id_map_excel(mapping, map_path)
     print(f"Wrote: {map_path}")
