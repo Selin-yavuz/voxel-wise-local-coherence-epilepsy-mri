@@ -117,7 +117,8 @@ The selected threshold is then applied unchanged to the held-out test fold.
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install -e ".[dev]"
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev]"
 ```
 
 ## Artificial Focus Test
@@ -155,6 +156,11 @@ python scripts/run_step9_make_native_maps.py
 
 ## Tests
 
+Tests are designed to run on a fresh code download before adding real data.
+They do not require patient MRI data, DICOM files, or generated pipeline
+outputs. The artificial-focus tests create temporary synthetic NIfTI images and
+check whether the assigned focus is detected.
+
 Run the artificial-focus smoke test to print the assigned and detected focus:
 
 ```bash
@@ -169,3 +175,10 @@ pytest
 
 The `pytest` suite includes the artificial-focus detection check in
 `tests/test_artificial_focus.py`.
+
+If `pytest` reports `ModuleNotFoundError` for a package such as `nibabel`,
+install the project dependencies in the active environment:
+
+```bash
+python -m pip install -e ".[dev]"
+```
