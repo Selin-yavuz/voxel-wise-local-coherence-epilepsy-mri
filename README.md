@@ -72,7 +72,7 @@ generated results are not included.
 | `scripts/run_step7_threshold_sweep_focus.py` | Runs focused threshold sweeps for selected model families. |
 | `scripts/run_step8_extract_suspicious_voxels.py` | Extracts threshold-positive candidate voxels. |
 | `scripts/run_step9_make_native_maps.py` | Builds native-space coherence maps, threshold masks, and overlay visualizations. |
-| `scripts/run_artificial_focus_test.py` | Creates artificial NIfTI images with a known focus and checks whether the score map recovers it. |
+| `scripts/run_artificial_focus_test.py` | Creates artificial NIfTI images with a known focus and checks whether the score map detects the assigned focus. |
 
 ## Visualization Scripts
 

@@ -79,7 +79,7 @@ def run_artificial_focus_test(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Create artificial NIfTI images and check recovery of the assigned focus."
+        description="Create artificial NIfTI images and check detection of the assigned focus."
     )
     parser.add_argument(
         "--root-dir",
