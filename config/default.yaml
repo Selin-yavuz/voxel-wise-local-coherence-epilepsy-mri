@@ -1,0 +1,19 @@
+cohorts: ["patients", "controls"]
+
+sequences:
+  - t2_tra
+  - t2_cor
+  - t1_tra
+  - t1_sag
+  - t2_darkfluid_tra
+
+mrc:
+  min_step: 1
+  max_step: 5
+  min_power: 1
+  max_power: 2
+  roi_shapes: ["square", "circle"]
+
+cv:
+  n_splits: 5
+  seed: 42
