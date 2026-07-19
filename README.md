@@ -59,6 +59,26 @@ generated results are not included.
 - power transformation range;
 - cross-validation fold count and random seed.
 
+## ROI And Neighborhood Settings
+
+Local neighborhood ROI shapes are controlled by `mrc.roi_shapes` in
+`config/default.yaml`. The implemented ROI shapes are `square` and `circle`.
+
+By default, step 4 runs every ROI shape listed in the configuration:
+
+```bash
+python scripts/run_step4_mrc_compute.py
+```
+
+To run one ROI shape only:
+
+```bash
+python scripts/run_step4_mrc_compute.py --roi-shape circle
+```
+
+Feature rows store the ROI/model parameters as `shape`, `primary_rate`,
+`secondary_rate`, `step`, `power`, and `MRC_value`.
+
 ## Pipeline Scripts
 
 | Script | Purpose |
@@ -220,3 +240,8 @@ same Python environment:
 python -m pip install -e ".[dev]"
 python -m pytest
 ```
+
+## Citation
+
+If this repository is used as a code reference, cite the associated manuscript.
+The final DOI and article citation can be added after publication.
