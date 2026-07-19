@@ -155,6 +155,17 @@ python scripts/run_step9_make_native_maps.py
 
 ## Tests
 
+Run the artificial-focus smoke test to print the assigned and detected focus:
+
+```bash
+python scripts/run_artificial_focus_test.py
+```
+
+Run the full automated test suite:
+
 ```bash
 pytest
 ```
+
+The `pytest` suite includes the artificial-focus detection check in
+`tests/test_artificial_focus.py`.
