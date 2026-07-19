@@ -170,15 +170,17 @@ python scripts/run_artificial_focus_test.py
 Run the full automated test suite:
 
 ```bash
-pytest
+python -m pytest
 ```
 
 The `pytest` suite includes the artificial-focus detection check in
 `tests/test_artificial_focus.py`.
 
 If `pytest` reports `ModuleNotFoundError` for a package such as `nibabel`,
-install the project dependencies in the active environment:
+make sure the project dependencies are installed and run pytest through the
+same Python environment:
 
 ```bash
 python -m pip install -e ".[dev]"
+python -m pytest
 ```
