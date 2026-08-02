@@ -196,10 +196,10 @@ class SuspiciousVoxelVisualizer:
         patches_list.append(
             patches.Circle(
                 (y, x),
-                0.8,
+                0.2,
                 facecolor="yellow",
                 edgecolor="none",
-                alpha=0.5,
+                alpha=0.4,
             )
         )
 
